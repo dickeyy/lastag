@@ -68,3 +68,5 @@ node_modules/
 node_modules
 .vscode
 old-website
+.firebaserc
+firebase.json
