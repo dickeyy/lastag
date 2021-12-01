@@ -65,6 +65,10 @@ body {
     min-height: 100vh;
 }
 
+.main-body {
+    padding: 15px 10%
+}
+
 .content-wrap {
     padding-bottom: 4rem;
 }
@@ -184,6 +188,24 @@ body {
     background-color: rgba(102,252,241,.5);
 }
 
+.main-p {
+    margin-top: 20px;
+    text-align: center;
+    font-family: 'Ubuntu';
+    color: #7D7D7D;
+}
+
+.main-a {
+    text-decoration: none;
+    font-family: 'Ubuntu';
+    font-weight: 700;
+    color:#7D7D7D;
+}
+
+.main-a:hover {
+    color:#45a29e;
+}
+
 .main_title {
     font-family: 'Ubuntu';
     font-weight: 700;
@@ -191,7 +213,7 @@ body {
     display: flex;
     justify-content: center;
     margin-top: 160px;
-    font-size: 150px;
+    font-size: 100px;
 }
 
 .main_subtitle {
@@ -226,7 +248,32 @@ body {
 .main_head_buttons {
     justify-content:center; 
     display: flex;
-    margin-top: 80px;
+    margin-top: 50px;
+}
+
+.online-gamer-container {
+    justify-content:flex-start;
+    display: flex;
+}
+
+.online-gamer-img {
+    height:500px; 
+    width: 500px
+}
+
+.online-gamer-title {
+    font-family: 'Ubuntu';
+    color: white;
+    margin-top: 200px;
+    margin-left: 50px;
+    font-size: 40px;
+}
+
+.online-gamer-p {
+    font-family: 'Ubuntu';
+    color: #7d7d7d;
+    margin-top:220px;
+    margin-left: 50px;
 }
 
 .about_title {
@@ -438,8 +485,7 @@ body {
 .price-container {
     display: flex;
     align-items: center;
-    padding-left: 430px;
-    padding-right: 430px;
+    padding-left: 10px;
 }
 
 .prCont-free {
@@ -452,6 +498,7 @@ body {
     display: flex; */
     margin: auto;
     margin-top: 50px;
+    margin-right: 20px;
 }
 
 .prCont-pro {
@@ -467,6 +514,7 @@ body {
     margin: auto;
     margin-top: 50px;
     box-shadow: 0 0px 0px 0 #66fcf1, 0 0px 15px 0 #66fcf1;
+    margin-left: 20px;
 }
 
 .pr-h2-free {
@@ -483,9 +531,20 @@ body {
     text-align: center;
 }
 
+.pro-title-sperator1 {
+    display: inline-block; 
+    text-align: center
+}
+
+.pro-title-sperator2 {
+    display: inline-block; 
+    text-align: center
+}
+
 .pr-ul {
-    margin-right: 70px;
-    margin-left: 70px;
+    /* margin-right: 70px;
+    margin-left: 70px; */
+    text-align: center;
     font-family: 'Ubuntu';
     color: white;
     margin-top: 50px;
