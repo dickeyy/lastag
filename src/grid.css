@@ -1,0 +1,138 @@
+.grid-home {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr 1fr 1fr;
+    grid-template-rows: 0.3fr 1.7fr 1.4fr 0.6fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "header header header header"
+      "body body body body"
+      "body body body body"
+      "footer footer footer footer";
+  }
+  
+  .header {
+    display: grid; 
+    grid-template-columns: 0.9fr 1.1fr 1fr; 
+    grid-template-rows: 100px; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+      "logo . nav"; 
+    grid-area: header; 
+    border: 2px solid red;
+    background-color: #0b0c10;
+  }
+  .logo { grid-area: logo;
+    border: 2px solid blue }
+    
+  .nav { 
+    grid-area: nav; 
+    border: 2px solid green;
+    
+}
+  
+  .footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ". . ."
+      "foot-left foot-center foot-right"
+      ". . .";
+    grid-area: footer;
+    border: 2px solid red;
+    background-color: #0b0c10;
+  }
+  
+  .foot-left { grid-area: foot-left; 
+    border: 2px solid blue;}
+  
+  .foot-center { grid-area: foot-center; 
+    border: 2px solid green;}
+  
+  .foot-right { grid-area: foot-right; 
+    border: 2px solid orange;}
+  
+  .body {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "body-side-left body-main body-main body-main body-main body-side-right"
+      "body-side-left body-main body-main body-main body-main body-side-right"
+      "body-side-left body-main body-main body-main body-main body-side-right";
+    grid-area: body;
+    border: 2px solid red;
+  }
+  
+  .body-side-left { grid-area: body-side-left; 
+    border: 2px solid blue;}
+  
+  .body-side-right { grid-area: body-side-right; 
+    border: 2px solid green;}
+  
+  .body-main {
+    display: grid;
+    grid-template-columns: 0.8fr 1.4fr 0.8fr;
+    grid-template-rows: 1.1fr 0.9fr 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "b-m-1 b-m-2 b-m-3"
+      "b-m-4 b-m-5 b-m-6"
+      "b-m-7 b-m-8 b-m-9"
+      "b-m-10 b-m-11 b-m-12"
+      "b-m-13 b-m-14 b-m-15";
+    grid-area: body-main;
+    border: 2px solid yellow;
+  }
+  
+  .b-m-1 { grid-area: b-m-1; 
+    border: 2px solid orange;}
+  
+  .b-m-2 { grid-area: b-m-2; 
+    border: 2px solid purple;}
+  
+  .b-m-3 { grid-area: b-m-3; 
+    border: 2px solid pink;}
+  
+  .b-m-4 { grid-area: b-m-4; 
+    border: 2px solid orange;}
+  
+  .b-m-5 { grid-area: b-m-5; 
+    border: 2px solid purple;}
+  
+  .b-m-6 { grid-area: b-m-6; 
+    border: 2px solid pink;}
+  
+  .b-m-7 { grid-area: b-m-7; 
+    border: 2px solid orange;}
+  
+  .b-m-8 { grid-area: b-m-8; 
+    border: 2px solid purple;}
+  
+  .b-m-9 { grid-area: b-m-9; 
+    border: 2px solid pink;}
+  
+  .b-m-10 { grid-area: b-m-10; 
+    border: 2px solid orange;}
+  
+  .b-m-11 { grid-area: b-m-11; 
+    border: 2px solid purple;}
+  
+  .b-m-12 { grid-area: b-m-12; 
+    border: 2px solid pink;}
+  
+  .b-m-13 { grid-area: b-m-13; 
+    border: 2px solid orange;}
+  
+  .b-m-14 { grid-area: b-m-14; 
+    border: 2px solid purple;}
+  
+  .b-m-15 { grid-area: b-m-15; 
+    border: 2px solid pink;}
+  
