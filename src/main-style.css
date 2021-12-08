@@ -169,6 +169,8 @@ body {
     display: flex;
     justify-content: center;
     font-size: 100px;
+    text-align: center;
+    margin-top: 50px;
 }
 
 .main_subtitle {
@@ -202,8 +204,8 @@ body {
 
 .main_head_buttons {
     justify-content:center; 
-    display: flex;
-    margin-top: 50px;
+    display: grid;
+    margin-top: 30px;
 }
 
 .online-gamer-container {
@@ -308,6 +310,27 @@ body {
     justify-content: center;
 }
 
+.form-control-button-delete {
+    padding: 9px 25px;
+    border: 2px solid;
+    border-color: red;
+    border-radius: 13px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: white;
+    text-decoration: none;
+    background-color: #0b0c10;
+    display: flex;
+    justify-content: center;
+}
+
+.form-control-button-delete:hover {
+    background-color: rgba(253, 0, 0, 0.5);
+}
+
 .form-control-button:hover {
     background-color: rgba(102,252,241,.5);
 }
@@ -352,10 +375,7 @@ body {
 .about-p {
     color: white;
     font-family: 'Ubuntu';
-    margin-top: 40px;
-    margin-right: 400px;
-    margin-left: 400px;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 .about_h2-2 {
@@ -612,4 +632,20 @@ body {
     font-weight: 500;
     font-size: 20px;
     padding-left: 5px
+}
+
+.about-container-1 { 
+    background-color: #0b0c10;
+    border-radius: 13px;
+    padding: 10px;
+    margin: 20px 10px;
+    text-align: center
+}
+
+hr {
+    border: 1px solid #1f2833;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }

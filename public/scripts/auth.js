@@ -14,7 +14,7 @@ const filePath = window.location.pathname;
 const pageName = filePath.split("/").pop();
 
 // Auth system for Signup
-if (pageName == 'register.html') { // If page is register
+if (pageName == 'register') { // If page is register
     if (cUser != null) { // Redirect if logged in
         window.location.replace('account.html')
     } else {
@@ -80,7 +80,7 @@ if (pageName == 'register.html') { // If page is register
 }
 
 // Auth system for Log In
-if (pageName == 'login.html') { // If page is login
+if (pageName == 'login') { // If page is login
     if (cUser != null) { // Redirect if logged in
         window.location.replace('account.html')
     } else {
@@ -112,7 +112,7 @@ if (pageName == 'login.html') { // If page is login
 }
 
 // Auth system for sign out 
-if (pageName == 'signout.html') { // Make sure page is signout page
+if (pageName == 'signout') { // Make sure page is signout page
     signOut(auth).then(() => { // Sign out user
         window.location.replace('index.html') // Redirect to home
     }). catch((error) => { // Catch and alert

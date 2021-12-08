@@ -21,14 +21,22 @@
     grid-area: header; 
     border: 2px solid red;
     background-color: #0b0c10;
+    padding: 0px 10%
   }
-  .logo { grid-area: logo;
-    border: 2px solid blue }
+  .logo { 
+    grid-area: logo;
+    border: 2px solid blue; 
+    display: grid; 
+    justify-content: flex-start;
+  }
     
   .nav { 
     grid-area: nav; 
     border: 2px solid green;
-    
+    display: grid; 
+    text-align: center;
+    justify-content: flex-end;
+    align-items: center
 }
   
   .footer {
@@ -44,20 +52,33 @@
     grid-area: footer;
     border: 2px solid red;
     background-color: #0b0c10;
+    padding: 0px 10%
   }
   
-  .foot-left { grid-area: foot-left; 
-    border: 2px solid blue;}
+  .foot-left { 
+    grid-area: foot-left; 
+    border: 2px solid blue;
+    display: grid; 
+    text-align: center;
+    justify-content: flex-start;
+    align-items: center
+  }
   
   .foot-center { grid-area: foot-center; 
     border: 2px solid green;}
   
-  .foot-right { grid-area: foot-right; 
-    border: 2px solid orange;}
+  .foot-right { 
+    grid-area: foot-right; 
+    border: 2px solid orange;
+    display: grid; 
+    text-align: center;
+    justify-content: flex-end;
+    align-items: center
+  }
   
   .body {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: .5fr 1fr 1fr 1fr 1fr .5fr;
     grid-template-rows: 1fr 1fr 1fr;
     gap: 0px 0px;
     grid-auto-flow: row;
@@ -119,7 +140,8 @@
     border: 2px solid pink;}
   
   .b-m-10 { grid-area: b-m-10; 
-    border: 2px solid orange;}
+    border: 2px solid orange; 
+  }
   
   .b-m-11 { grid-area: b-m-11; 
     border: 2px solid purple;}

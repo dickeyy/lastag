@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-analytics.js";
-import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js";
  
 const firebaseConfig = {
@@ -22,9 +22,15 @@ const analytics = getAnalytics(app);
 // Auth stuff
 const auth = getAuth(app);
 
+// Page name stuff
+const filePath = window.location.pathname;
+const pageName = filePath.split("/").pop();
+
 // Detedct auth state
 onAuthStateChanged(auth, user => {
   if(user != null) {
-    console.log('Logged In as: ' + auth.currentUser.email);
+    //
   } 
 })
+
+export const cUser = auth.currentUser
