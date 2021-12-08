@@ -5,11 +5,13 @@ import { app } from "../main.js";
 // Set consts
 const auth = getAuth(app)
 await new Promise(r => setTimeout(r, 400)); // wait for auth to initialize
-const cUser = auth.currentUser
+const cUser = auth.currentUser // define current user
 const settings = {
     experimentalForceLongPolling: true,
 } 
 const db = getFirestore(app, settings);
+
+// Stuff to get file name for page verification
 const filePath = window.location.pathname;
 const fileExtension = filePath.split("/").pop();
 const pageName = fileExtension.split('.')[0]
@@ -122,53 +124,54 @@ if (pageName == 'signout') { // Make sure page is signout page
 }
 
 // Auth system for Forgot Password
-if (pageName == 'forgot-password') {
-    const forgotPasswordForm = document.querySelector('#forgot-password-form');
+if (pageName == 'forgot-password') { // Check that the page is correct
+    const forgotPasswordForm = document.querySelector('#forgot-password-form'); // Get form
 
-    forgotPasswordForm.addEventListener('submit', (e) => {
-        e.preventDefault();
+    forgotPasswordForm.addEventListener('submit', (e) => { // Run on submit
+        e.preventDefault(); // Prevent refresh
 
-        const email = forgotPasswordForm['email'].value;
+        const email = forgotPasswordForm['email'].value; // Get entered email
 
-        sendPasswordResetEmail(auth, email).then(() => {
+        sendPasswordResetEmail(auth, email).then(() => { // Send user email
             alert('Password reset link sent!')
             window.location.replace('login.html')
-        }). catch((error) => {
+        }). catch((error) => { // Catch and alert errors
             alert(error.message)
         })
     })
 }
 
 // Auth system for Delete Account
-if (pageName == 'delete-account') {
-    const deleteAcctForm = document.querySelector('#delete-acct-form')
-    deleteAcctForm.addEventListener('submit', (e) => {
-        e.preventDefault();
+if (pageName == 'delete-account') { // Check if page is correct
+    const deleteAcctForm = document.querySelector('#delete-acct-form') // Get form
+    deleteAcctForm.addEventListener('submit', (e) => { // Run on submit
+        e.preventDefault(); // Prevent refresh
 
-        const password = deleteAcctForm['password'].value
+        // Get entered info
+        const password = deleteAcctForm['password'].value;
         const username = deleteAcctForm['username'].value;
 
-        const credential = EmailAuthProvider.credential(cUser.email, password)
+        const credential = EmailAuthProvider.credential(cUser.email, password) // set credential object
 
-        reauthenticateWithCredential(cUser, credential).then(() => {
-            deleteUser(cUser).then(() => {
-                return deleteDoc(doc(db, 'users', cUser.uid)).then(() => {
-                    return deleteDoc(doc(db, 'takenNames', username)).then(() => {
-                        alert('Account has been deleted')
-                        window.location.replace('index.html')
-                    }). catch((error1) => {
+        reauthenticateWithCredential(cUser, credential).then(() => { // Reauthenticate user. Sometimes deleteUser() requires this so we do it everytime to be safe
+            deleteUser(cUser).then(() => { // Delete account
+                return deleteDoc(doc(db, 'users', cUser.uid)).then(() => { // Delete document in users collection
+                    return deleteDoc(doc(db, 'takenNames', username)).then(() => { // delete document in takenNames collection
+                        alert('Account has been deleted') // Tell the user
+                        window.location.replace('index.html') // Redirect
+                    }). catch((error1) => { // Catch errors for second doc delete
                         console.log(error1.message)
                     })
-                }). catch((error2) => {
+                }). catch((error2) => { // catch errors for first doc delete
                     console.log(error2.message)
                 })
-            }). catch((error3) => {
+            }). catch((error3) => { // Catch errors for deleting users
                 console.log(error3.message)
             })
-        }). catch((error4) => {
-            if (error4.code == "auth/wrong-password") {
+        }). catch((error4) => { // Catch errors for reauth
+            if (error4.code == "auth/wrong-password") { // if error is wrong password alert user
                 alert('Password is incorrect')
-            } else {
+            } else { // any other errors
                 console.log(error4.message)
             }
         })
