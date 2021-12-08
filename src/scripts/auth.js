@@ -1,4 +1,4 @@
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, deleteUser, reauthenticateWithCredential } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js";
 import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js";
 import { app } from "../main.js";
 
@@ -117,5 +117,23 @@ if (pageName == 'signout.html') { // Make sure page is signout page
         window.location.replace('index.html') // Redirect to home
     }). catch((error) => { // Catch and alert
         alert(error.message)
+    })
+}
+
+// Auth system for Forgot Password
+if (pageName == 'forgot-password.html') {
+    const forgotPasswordForm = document.querySelector('#forgot-password-form');
+
+    forgotPasswordForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const email = forgotPasswordForm['email'].value;
+
+        sendPasswordResetEmail(auth, email).then(() => {
+            alert('Password reset link sent!')
+            window.location.replace('login.html')
+        }). catch((error) => {
+            alert(error.message)
+        })
     })
 }
