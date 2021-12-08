@@ -166,7 +166,11 @@ if (pageName == 'delete-account') {
                 console.log(error3.message)
             })
         }). catch((error4) => {
-            console.log(error4.message)
+            if (error4.code == "auth/wrong-password") {
+                alert('Password is incorrect')
+            } else {
+                console.log(error4.message)
+            }
         })
     })
 
