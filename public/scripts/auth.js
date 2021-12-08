@@ -1,5 +1,5 @@
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendPasswordResetEmail  } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js";
-import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendPasswordResetEmail, deleteUser, reauthenticateWithCredential, EmailAuthProvider } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js";
+import { getFirestore, doc, setDoc, getDoc, deleteDoc  } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js";
 import { app } from "../main.js";
 
 // Set consts
@@ -11,7 +11,8 @@ const settings = {
 } 
 const db = getFirestore(app, settings);
 const filePath = window.location.pathname;
-const pageName = filePath.split("/").pop();
+const fileExtension = filePath.split("/").pop();
+const pageName = fileExtension.split('.')[0]
 
 // Auth system for Signup
 if (pageName == 'register') { // If page is register
@@ -136,4 +137,37 @@ if (pageName == 'forgot-password') {
             alert(error.message)
         })
     })
+}
+
+// Auth system for Delete Account
+if (pageName == 'delete-account') {
+    const deleteAcctForm = document.querySelector('#delete-acct-form')
+    deleteAcctForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const password = deleteAcctForm['password'].value
+        const username = deleteAcctForm['username'].value;
+
+        const credential = EmailAuthProvider.credential(cUser.email, password)
+
+        reauthenticateWithCredential(cUser, credential).then(() => {
+            deleteUser(cUser).then(() => {
+                return deleteDoc(doc(db, 'users', cUser.uid)).then(() => {
+                    return deleteDoc(doc(db, 'takenNames', username)).then(() => {
+                        alert('Account has been deleted')
+                        window.location.replace('index.html')
+                    }). catch((error1) => {
+                        console.log(error1.message)
+                    })
+                }). catch((error2) => {
+                    console.log(error2.message)
+                })
+            }). catch((error3) => {
+                console.log(error3.message)
+            })
+        }). catch((error4) => {
+            console.log(error4.message)
+        })
+    })
+
 }
