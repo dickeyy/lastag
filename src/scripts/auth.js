@@ -1,4 +1,4 @@
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendPasswordResetEmail, deleteUser, reauthenticateWithCredential, EmailAuthProvider } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithPopup, signInWithEmailAndPassword, signOut, GoogleAuthProvider, sendPasswordResetEmail, deleteUser, reauthenticateWithCredential, EmailAuthProvider } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js";
 import { getFirestore, doc, setDoc, getDoc, deleteDoc  } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js";
 import { app } from "../main.js";
 
@@ -23,6 +23,32 @@ if (pageName == 'register') { // If page is register
     } else {
 
         const signUpForm = document.querySelector('#sign-up-form'); // Get form from html
+        const googleProvider = new GoogleAuthProvider();
+        const googleButton = document.getElementById('google-btn')
+
+        googleButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            signInWithPopup(auth, googleProvider).then((result) => {
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+                const token = credential.accessToken;
+                const user = result.user;
+                
+                return setDoc(doc(db, 'users', user.uid), { // Create doc in users collection
+                    username: user.uid,
+                }). then (() => { // If that works then create doc in usernames collection
+                    console.log('Created doc in users')
+                    return setDoc(doc(db, 'takenNames', user.uid), {
+                        uid: user.uid
+                    }). then (() => {
+                        window.location.replace('account.html')
+                    })
+                })
+
+            }).catch((error) => {
+                console.log(error)
+            })
+        })
 
         signUpForm.addEventListener('submit', (e) => { // Runs on form submit
             e.preventDefault();
@@ -87,6 +113,24 @@ if (pageName == 'login') { // If page is login
     if (cUser != null) { // Redirect if logged in
         window.location.replace('account.html')
     } else {
+
+        const googleProvider = new GoogleAuthProvider();
+        const googleButton = document.getElementById('google-btn')
+
+        googleButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            signInWithPopup(auth, googleProvider).then((result) => {
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+                const token = credential.accessToken;
+                const user = result.user;
+                
+                window.location.replace('account.html')
+            }).catch((error) => {
+                console.log(error)
+            })
+        })
+
         const signinForm = document.querySelector('#sign-in-form'); // Get html form
 
         signinForm.addEventListener('submit', (e) => { // runs when form is submitted
