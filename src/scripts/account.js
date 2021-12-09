@@ -45,7 +45,8 @@ onAuthStateChanged(auth, user => {
                   username: newUsername,
                 }). then(() => {
                   setDoc(doc(db, 'takenNames', newUsername), {
-                    uid: user.uid
+                    uid: user.uid,
+                    changedAt: "ur mother"
                   }). then(() => {
                     deleteDoc(doc(db, 'takenNames', username));
                   }). then(() => {
