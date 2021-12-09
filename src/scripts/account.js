@@ -1,5 +1,5 @@
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js";
-import { getFirestore, getDoc, doc, setDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js";
+import { getFirestore, getDoc, doc, setDoc, deleteDoc, Timestamp, addDoc, collection } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js";
 import { app } from "../main.js";
 
 const auth = getAuth(app);
@@ -35,28 +35,61 @@ onAuthStateChanged(auth, user => {
           } else {
 
             // Check if username is taken
-            getDoc(doc(db, 'takenNames', newUsername)).then(docSnap => {
+            getDoc(doc(db, 'takenNames', newUsername)).then(checkUsername => {
               
             // if username is taken
-              if (docSnap.exists()) {
+              if (checkUsername.exists()) {
                 alert('Username is taken, please chose a new one.');
               } else {
-                setDoc(doc(db, 'users', user.uid), {
-                  username: newUsername,
-                }). then(() => {
-                  setDoc(doc(db, 'takenNames', newUsername), {
-                    uid: user.uid,
-                    changedAt: "ur mother"
-                  }). then(() => {
-                    deleteDoc(doc(db, 'takenNames', username));
-                  }). then(() => {
-                    infoForm.reset();
-                    window.location.reload();
-                  })
-                })
+
+                getDoc(doc(db, 'takenNames', username)).then(checkDate => {
+                  let dateData = checkDate.data();
+                  let updatedDate = dateData.changedAt.toDate();
+                  let currentDate = Timestamp.now()
+                  let jsCurrentDate = currentDate.toDate()
+
+                  if (jsCurrentDate.getDate() >= updatedDate.getDate() + 14) {
+                    setDoc(doc(db, 'users', user.uid), {
+                      username: newUsername,
+                    }). then(() => {
+                      setDoc(doc(db, 'takenNames', newUsername), {
+                        uid: user.uid,
+                        changedAt: jsCurrentDate
+                      }). then(() => {
+                        deleteDoc(doc(db, 'takenNames', username));
+                      }). then(() => {
+                        infoForm.reset();
+                        window.location.reload();
+                      }). then(() => {
+                        const docRef = addDoc(collection(db, 'emailSent'), {
+                          to: user.email,
+                          message: {
+                            subject: 'LasTag Username Updated',
+                            text: 'Your LasTag username was just updated, if you did not do this, change your password immediately.'
+                          }
+                        }). then(() => {
+                          console.log('Email sent with id' + docRef.id);
+                        })
+                      })
+                    })
+                  } else {
+                    alert(`You can only change your username once every 14 days, please wait until ${updatedDate.getMonth() + 1}/${updatedDate.getDate() + 14}/${updatedDate.getFullYear()}`)
+                  }
+                }) 
               }
             })
           }
+
+          addDoc(doc(db, 'emailSent'), { // Send email
+            to: user.email,
+            message: {
+              subject: 'LasTag Username Updated',
+              text: 'Your LasTag username was just updated, if you did not do this, change your password immediately.'
+            }
+          }). then(() => {
+            console.log('Queued Email')
+          })
+
         })
 
       })

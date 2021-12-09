@@ -1,5 +1,5 @@
 import { getAuth, createUserWithEmailAndPassword, signInWithPopup, signInWithEmailAndPassword, signOut, GoogleAuthProvider, sendPasswordResetEmail, deleteUser, reauthenticateWithCredential, EmailAuthProvider } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js";
-import { getFirestore, doc, setDoc, getDoc, deleteDoc  } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js";
+import { getFirestore, doc, setDoc, getDoc, deleteDoc, Timestamp  } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js";
 import { app } from "../main.js";
 
 // Set consts
@@ -28,25 +28,35 @@ if (pageName == 'register') { // If page is register
 
         googleButton.addEventListener('click', (e) => {
             e.preventDefault();
-            
-            signInWithPopup(auth, googleProvider).then((result) => {
-                const credential = GoogleAuthProvider.credentialFromResult(result);
-                const token = credential.accessToken;
-                const user = result.user;
-                
-                return setDoc(doc(db, 'users', user.uid), { // Create doc in users collection
-                    username: user.uid,
-                }). then (() => { // If that works then create doc in usernames collection
-                    console.log('Created doc in users')
-                    return setDoc(doc(db, 'takenNames', user.uid), {
-                        uid: user.uid
-                    }). then (() => {
-                        window.location.replace('account.html')
-                    })
-                })
 
-            }).catch((error) => {
-                console.log(error)
+            const username = prompt('What do you want your username to be?')
+
+            getDoc(doc(db, 'takenNames', username)).then(docSnap => { // Check if username is taken
+                if (docSnap.exists()) { // If username is taken
+                    alert('Username is taken, please try again');
+                } else {
+            
+                    signInWithPopup(auth, googleProvider).then((result) => {
+                        const credential = GoogleAuthProvider.credentialFromResult(result);
+                        const token = credential.accessToken;
+                        const user = result.user;
+                        
+                        return setDoc(doc(db, 'users', user.uid), { // Create doc in users collection
+                            username: username
+                        }). then (() => { // If that works then create doc in usernames collection
+                            console.log('Created doc in users')
+                            return setDoc(doc(db, 'takenNames', username), {
+                                uid: username,
+                                changedAt: Timestamp.now().toDate()
+                            }). then (() => {
+                                window.location.replace('account.html')
+                            })
+                        })
+
+                    }).catch((error) => {
+                        console.log(error)
+                    })
+                }
             })
         })
 
@@ -88,7 +98,8 @@ if (pageName == 'register') { // If page is register
                             }). then (() => { // If that works then create doc in usernames collection
                                 console.log('Created doc in users')
                                 return setDoc(doc(db, 'takenNames', username), {
-                                    uid: cred.user.uid
+                                    uid: cred.user.uid,
+                                    changedAt: Timestamp.now().toDate()
                                 })
                             })
                         }). then(() => { // If that works then reset form and redirect
