@@ -27,18 +27,18 @@ const filePath = window.location.pathname;
 const pageName = filePath.split("/").pop();
 const headBtn = document.getElementById('loginBtn')
 const headBtn2 = document.getElementById('loginBtn2')
-const headBtn3 = document.getElementById('loginBtn3')
+//const headBtn3 = document.getElementById('loginBtn3')
 
 // Detedct auth state
 onAuthStateChanged(auth, user => {
   if(user != null) {
     headBtn.innerText = "Account"
     headBtn2.innerText = "Account"
-    headBtn3.innerText = "Account"
+    //headBtn3.innerText = "Account"
   } else {
     headBtn.innerText = "Log In"
     headBtn2.innerText = "Log In"
-    headBtn3.innerText = "Log In"
+    //headBtn3.innerText = "Log In"
   }
 })
 
