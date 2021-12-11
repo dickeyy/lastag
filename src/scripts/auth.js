@@ -6,9 +6,7 @@ import { app } from "../main.js";
 const auth = getAuth(app)
 await new Promise(r => setTimeout(r, 400)); // wait for auth to initialize
 const cUser = auth.currentUser // define current user
-const settings = {
-    experimentalForceLongPolling: true,
-} 
+const settings = { experimentalForceLongPolling: true, } 
 const db = getFirestore(app, settings);
 
 // Stuff to get file name for page verification
@@ -50,15 +48,15 @@ if (pageName == 'register') { // If page is register
                                 changedAt: Timestamp.now().toDate()
                             }). then (() => {
                                 window.location.replace('account.html')
-                            })
-                        })
+                            }) // Line 51
+                        }) // Line 46
 
                     }).catch((error) => {
                         console.log(error)
-                    })
-                }
-            })
-        })
+                    }) // Line 56
+                } // Line 37
+            }) // Line 34
+        }) // Line 29
 
         signUpForm.addEventListener('submit', (e) => { // Runs on form submit
             e.preventDefault();
@@ -100,8 +98,8 @@ if (pageName == 'register') { // If page is register
                                 return setDoc(doc(db, 'takenNames', username), {
                                     uid: cred.user.uid,
                                     changedAt: Timestamp.now().toDate()
-                                })
-                            })
+                                }) // Line 100
+                            }) // Line 98
                         }). then(() => { // If that works then reset form and redirect
                             signUpForm.reset()
                             window.location.replace('account.html')
@@ -110,14 +108,14 @@ if (pageName == 'register') { // If page is register
                                 alert('Email is already in use, please sign in')
                             } else { // If its something else 
                                 alert(error.message)
-                            }
-                        })
-                    }
-                }
-            })
-        })
-    }
-}
+                            } // Line 111
+                        }) // Line 108
+                    } // Line 93
+                } // Line 84
+            }) // Line 81
+        }) // Line 63
+    } // Line 23
+} // Line 20
 
 // Auth system for Log In
 if (pageName == 'login') { // If page is login
@@ -139,8 +137,8 @@ if (pageName == 'login') { // If page is login
                 window.location.replace('account.html')
             }).catch((error) => {
                 console.log(error)
-            })
-        })
+            }) // Line 140
+        }) // Line 131
 
         const signinForm = document.querySelector('#sign-in-form'); // Get html form
 
@@ -161,13 +159,11 @@ if (pageName == 'login') { // If page is login
                         alert('No user with that email was found')
                     } else { // Anything else
                         alert(error.message)
-                    }
-                })
-                
-        })
-    }
-    
-}
+                    } // Line 162
+            }) // Line 157    
+        }) // Line 147
+    } // Line 126
+} // Line 123
 
 // Auth system for sign out 
 if (pageName == 'signout') { // Make sure page is signout page
@@ -175,8 +171,8 @@ if (pageName == 'signout') { // Make sure page is signout page
         window.location.replace('index.html') // Redirect to home
     }). catch((error) => { // Catch and alert
         alert(error.message)
-    })
-}
+    }) // Line 174
+} // Line 171
 
 // Auth system for Forgot Password
 if (pageName == 'forgot-password') { // Check that the page is correct
@@ -192,9 +188,9 @@ if (pageName == 'forgot-password') { // Check that the page is correct
             window.location.replace('login.html')
         }). catch((error) => { // Catch and alert errors
             alert(error.message)
-        })
-    })
-}
+        }) // Line 191
+    }) // Line 183
+} // Line 180
 
 // Auth system for Delete Account
 if (pageName == 'delete-account') { // Check if page is correct
@@ -216,20 +212,19 @@ if (pageName == 'delete-account') { // Check if page is correct
                         window.location.replace('index.html') // Redirect
                     }). catch((error1) => { // Catch errors for second doc delete
                         console.log(error1.message)
-                    })
+                    }) // Line 215
                 }). catch((error2) => { // catch errors for first doc delete
                     console.log(error2.message)
-                })
+                }) // Line 218
             }). catch((error3) => { // Catch errors for deleting users
                 console.log(error3.message)
-            })
+            }) // Line 221
         }). catch((error4) => { // Catch errors for reauth
             if (error4.code == "auth/wrong-password") { // if error is wrong password alert user
                 alert('Password is incorrect')
             } else { // any other errors
                 console.log(error4.message)
-            }
-        })
-    })
-
-}
+            } // Line 227
+        }) // Line 224
+    }) // Line 200
+} // Line 198
