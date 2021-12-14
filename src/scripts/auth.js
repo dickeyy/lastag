@@ -247,3 +247,63 @@ if (pageName == 'delete-account') { // Check if page is correct
         }) // Line 224
     }) // Line 200
 } // Line 198
+
+// Coming soon page 
+if (pageName == 'coming-soon') {
+    const comingSoonForm = document.querySelector('#comingSoonForm')
+    comingSoonForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const email = comingSoonForm['email'].value;
+
+        return setDoc(doc(db, 'mailList', email), {
+            email: email, 
+            addedAt: Timestamp.now().toDate(),
+        }). then(() => {
+            const sendEmail = addDoc(collection(db, 'emailSent'), {
+                to: email,
+                message: {
+                    subject: 'Welcome to LasTag!',
+                    text: 'Thank you for signing up for notifications for LasTag! To unsubscribe, follow this link https://lastag.xyz/unsubscribe'
+                }
+            })
+        }). then(() => {
+            comingSoonForm.reset()
+            alert('Thank you for signing up')
+        })
+    })
+}
+
+// Contact page
+if (pageName == 'contact') {
+    const contactForm = document.querySelector('#contactForm')
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const supportEmail = 'support@lastag.xyz'
+
+        const email = contactForm['email'].value;
+        const name = contactForm['name'].value;
+        const subject = contactForm['subject'].value;
+        const message = contactForm['textarea'].value;
+
+        const sendSupport = addDoc(collection(db, 'emailSent'), {
+            to: supportEmail,
+            message: {
+                subject: 'Support Ticket',
+                text: `New Support Ticket:\n\nEmail: ${email}\nName: ${name}\nSubject: ${subject}\nMessage: ${message}`
+            }
+        })
+
+        const sendEmailUser = addDoc(collection(db, 'emailSent'), {
+            to: email, 
+            message: {
+                subject: 'Support Ticket Opened',
+                text: 'Thank you for contacting LasTag support, someone from our team will reach out to you shortly. Thanks!\n\nTo follow up on your ticket, please email support@lastag.xyz\n\n-LasTag Team'
+            }
+        })
+
+        alert('Your message has been sent. You should see a confirmation email shortly.')
+        contactForm.reset()
+    })
+}

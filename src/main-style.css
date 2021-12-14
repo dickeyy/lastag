@@ -265,19 +265,6 @@ body {
     border-color: #1f2833;
 }
 
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: #45a29e;
-    opacity: 1; /* Firefox */
-  }
-  
-  :-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: #45a29e;
-  }
-  
-  ::-ms-input-placeholder { /* Microsoft Edge */
-    color: #45a29e;
-  }
-
 .my-form-control:focus {
     background-color:#0b0c10;
     border: 2px solid;
@@ -290,6 +277,7 @@ body {
     margin-bottom: 5px;
     margin-top: 5px;
     margin-left: 5px;
+    font-family: 'Ubuntu';
 }
 
 .form-control-button {
@@ -307,6 +295,7 @@ body {
     background-color: #0b0c10;
     display: flex;
     justify-content: center;
+    margin-top: 20px;
 }
 
 .form-control-button-delete {
@@ -706,3 +695,79 @@ hr {
     /* Use the Roboto font that is loaded in the <head> */
     font-family: 'Roboto', sans-serif;
   }
+
+.contact-container {
+    background-color: #0b0c10;
+    padding: 1rem;
+    width: 500px;
+    max-width: 90%;
+    align-items: center;
+    margin: auto;
+    margin-top: 50px;
+    border: 2px solid;
+    border-radius: 13px;
+    border-color: #66fcf1;
+}
+
+.form-control-email {
+    background-color: #0b0c10;
+    border: 2px solid #7d7d7d;
+    border-radius: 13px;
+    padding: 10px;
+    width: 95%;
+    color: #7d7d7d;
+    height: 15px;
+    font-size: 15px;
+    color: #7d7d7d;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.form-control-email:focus {
+    outline: 2px solid #66fcf1;
+    border: none;
+    color: white;
+    font-size: 15px;
+}
+
+.form-control-name {
+    background-color: #0b0c10;
+    border: 2px solid #7d7d7d;
+    border-radius: 13px;
+    padding: 10px;
+    width: 95%;
+    color: #7d7d7d;
+    height: 15px;
+    font-size: 15px;
+    color: #7d7d7d;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.form-control-textarea {
+    background-color: #0b0c10;
+    border: 2px solid #7d7d7d;
+    border-radius: 13px;
+    padding: 10px;
+    color: #7d7d7d;
+    font-size: 15px;
+    color: #7d7d7d;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    max-width: 95%;
+    min-width: 95%;
+}
+
+.form-control-textarea:focus {
+    outline: 2px solid #66fcf1;
+    border: none;
+    color: white;
+    font-size: 15px;
+}
+
+.form-control-name:focus {
+    outline: 2px solid #66fcf1;
+    border: none;
+    color: white;
+    font-size: 15px;
+}

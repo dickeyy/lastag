@@ -34,7 +34,6 @@
 }
 
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
@@ -50,35 +49,6 @@ body {
     color: white;
     text-decoration: none;
     background-color: #0b0c10;
-}
-
-.header {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 15px 10%;
-    background-color: #0b0c10;
-}
-
-.page-container {
-    position: relative;
-    min-height: 100vh;
-}
-
-.content-wrap {
-    padding-bottom: 4rem;
-}
-
-.foot {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 15px 10%;
-    background-color: #0b0c10;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 4rem
 }
 
 .footer-p {
@@ -132,16 +102,6 @@ body {
     background-color: rgba(102,252,241,.5);
 }
 
-.footer, .push {
-    height: 50px;
-}
-
-.logo {
-    cursor: pointer;
-    margin-right: auto;
-    background-color: #0b0c10;
-}
-
 
 .nav_links {
     list-style: none;
@@ -184,14 +144,33 @@ body {
     background-color: rgba(102,252,241,.5);
 }
 
+.main-p {
+    margin-top: 20px;
+    text-align: center;
+    font-family: 'Ubuntu';
+    color: #7D7D7D;
+}
+
+.main-a {
+    text-decoration: none;
+    font-family: 'Ubuntu';
+    font-weight: 700;
+    color:#7D7D7D;
+}
+
+.main-a:hover {
+    color:#45a29e;
+}
+
 .main_title {
     font-family: 'Ubuntu';
     font-weight: 700;
     color: #66fcf1;
     display: flex;
     justify-content: center;
-    margin-top: 160px;
-    font-size: 150px;
+    font-size: 100px;
+    text-align: center;
+    margin-top: 50px;
 }
 
 .main_subtitle {
@@ -225,8 +204,33 @@ body {
 
 .main_head_buttons {
     justify-content:center; 
+    display: grid;
+    margin-top: 30px;
+}
+
+.online-gamer-container {
+    justify-content:flex-start;
     display: flex;
-    margin-top: 80px;
+}
+
+.online-gamer-img {
+    height:500px; 
+    width: 500px
+}
+
+.online-gamer-title {
+    font-family: 'Ubuntu';
+    color: white;
+    margin-top: 200px;
+    margin-left: 50px;
+    font-size: 40px;
+}
+
+.online-gamer-p {
+    font-family: 'Ubuntu';
+    color: #7d7d7d;
+    margin-top:220px;
+    margin-left: 50px;
 }
 
 .about_title {
@@ -261,19 +265,6 @@ body {
     border-color: #1f2833;
 }
 
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: #45a29e;
-    opacity: 1; /* Firefox */
-  }
-  
-  :-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: #45a29e;
-  }
-  
-  ::-ms-input-placeholder { /* Microsoft Edge */
-    color: #45a29e;
-  }
-
 .my-form-control:focus {
     background-color:#0b0c10;
     border: 2px solid;
@@ -286,6 +277,7 @@ body {
     margin-bottom: 5px;
     margin-top: 5px;
     margin-left: 5px;
+    font-family: 'Ubuntu';
 }
 
 .form-control-button {
@@ -303,6 +295,28 @@ body {
     background-color: #0b0c10;
     display: flex;
     justify-content: center;
+    margin-top: 20px;
+}
+
+.form-control-button-delete {
+    padding: 9px 25px;
+    border: 2px solid;
+    border-color: red;
+    border-radius: 13px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: white;
+    text-decoration: none;
+    background-color: #0b0c10;
+    display: flex;
+    justify-content: center;
+}
+
+.form-control-button-delete:hover {
+    background-color: rgba(253, 0, 0, 0.5);
 }
 
 .form-control-button:hover {
@@ -349,10 +363,7 @@ body {
 .about-p {
     color: white;
     font-family: 'Ubuntu';
-    margin-top: 40px;
-    margin-right: 400px;
-    margin-left: 400px;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 .about_h2-2 {
@@ -425,6 +436,29 @@ body {
     margin-left: auto;
     margin-right: auto;
 }
+.acct-btn-delete {
+    padding: 9px 25px;
+    margin-top: 20px;
+    border: 2px solid;
+    border-color: red;
+    border-radius: 13px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+    font-size: 25px;
+    color: white;
+    text-decoration: none;
+    background-color: #0b0c10;
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.acct-btn-delete:hover {
+    background-color: rgba(255, 0, 0, 0.5);
+}
 
 .acct-btn:hover {
     background-color: rgba(102,252,241,.5);
@@ -437,8 +471,7 @@ body {
 .price-container {
     display: flex;
     align-items: center;
-    padding-left: 430px;
-    padding-right: 430px;
+    padding-left: 10px;
 }
 
 .prCont-free {
@@ -451,6 +484,7 @@ body {
     display: flex; */
     margin: auto;
     margin-top: 50px;
+    margin-right: 20px;
 }
 
 .prCont-pro {
@@ -466,6 +500,7 @@ body {
     margin: auto;
     margin-top: 50px;
     box-shadow: 0 0px 0px 0 #66fcf1, 0 0px 15px 0 #66fcf1;
+    margin-left: 20px;
 }
 
 .pr-h2-free {
@@ -482,9 +517,20 @@ body {
     text-align: center;
 }
 
+.pro-title-sperator1 {
+    display: inline-block; 
+    text-align: center
+}
+
+.pro-title-sperator2 {
+    display: inline-block; 
+    text-align: center
+}
+
 .pr-ul {
-    margin-right: 70px;
-    margin-left: 70px;
+    /* margin-right: 70px;
+    margin-left: 70px; */
+    text-align: center;
     font-family: 'Ubuntu';
     color: white;
     margin-top: 50px;
@@ -599,49 +645,20 @@ body {
     padding-left: 5px
 }
 
-.form-control-button-delete {
-    padding: 9px 25px;
-    border: 2px solid;
-    border-color: red;
-    border-radius: 13px;
-    cursor: pointer;
-    transition: all 0.3s ease 0s;
-    font-family: 'Ubuntu', sans-serif;
-    font-weight: 700;
-    font-size: 15px;
-    color: white;
-    text-decoration: none;
+.about-container-1 { 
     background-color: #0b0c10;
-    display: flex;
-    justify-content: center;
-}
-
-.form-control-button-delete:hover {
-    background-color: rgba(253, 0, 0, 0.5);
-}
-
-.acct-btn-delete {
-    padding: 9px 25px;
-    margin-top: 20px;
-    border: 2px solid;
-    border-color: red;
     border-radius: 13px;
-    cursor: pointer;
-    transition: all 0.3s ease 0s;
-    font-family: 'Ubuntu', sans-serif;
-    font-weight: 700;
-    font-size: 25px;
-    color: white;
-    text-decoration: none;
-    background-color: #0b0c10;
-    display: flex;
-    justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
+    padding: 10px;
+    margin: 20px 10px;
+    text-align: center
 }
 
-.acct-btn-delete:hover {
-    background-color: rgba(255, 0, 0, 0.5);
+hr {
+    border: 1px solid #1f2833;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 #google-btn {
@@ -678,3 +695,79 @@ body {
     /* Use the Roboto font that is loaded in the <head> */
     font-family: 'Roboto', sans-serif;
   }
+
+.contact-container {
+    background-color: #0b0c10;
+    padding: 1rem;
+    width: 500px;
+    max-width: 90%;
+    align-items: center;
+    margin: auto;
+    margin-top: 50px;
+    border: 2px solid;
+    border-radius: 13px;
+    border-color: #66fcf1;
+}
+
+.form-control-email {
+    background-color: #0b0c10;
+    border: 2px solid #7d7d7d;
+    border-radius: 13px;
+    padding: 10px;
+    width: 95%;
+    color: #7d7d7d;
+    height: 15px;
+    font-size: 15px;
+    color: #7d7d7d;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.form-control-email:focus {
+    outline: 2px solid #66fcf1;
+    border: none;
+    color: white;
+    font-size: 15px;
+}
+
+.form-control-name {
+    background-color: #0b0c10;
+    border: 2px solid #7d7d7d;
+    border-radius: 13px;
+    padding: 10px;
+    width: 95%;
+    color: #7d7d7d;
+    height: 15px;
+    font-size: 15px;
+    color: #7d7d7d;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.form-control-textarea {
+    background-color: #0b0c10;
+    border: 2px solid #7d7d7d;
+    border-radius: 13px;
+    padding: 10px;
+    color: #7d7d7d;
+    font-size: 15px;
+    color: #7d7d7d;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    max-width: 95%;
+    min-width: 95%;
+}
+
+.form-control-textarea:focus {
+    outline: 2px solid #66fcf1;
+    border: none;
+    color: white;
+    font-size: 15px;
+}
+
+.form-control-name:focus {
+    outline: 2px solid #66fcf1;
+    border: none;
+    color: white;
+    font-size: 15px;
+}
