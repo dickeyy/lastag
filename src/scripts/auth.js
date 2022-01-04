@@ -1,10 +1,10 @@
 import { getAuth, createUserWithEmailAndPassword, signInWithPopup, signInWithEmailAndPassword, signOut, GoogleAuthProvider, sendPasswordResetEmail, deleteUser, reauthenticateWithCredential, EmailAuthProvider } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js";
-import { getFirestore, doc, setDoc, getDoc, deleteDoc, Timestamp, addDoc, collection  } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js";
+import { getFirestore, doc, setDoc, getDoc, deleteDoc, Timestamp, addDoc, collection, updateDoc, arrayUnion  } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js";
 import { app } from "../main.js";
 
 // Set consts
 const auth = getAuth(app)
-await new Promise(r => setTimeout(r, 400)); // wait for auth to initialize
+await new Promise(r => setTimeout(r, 5000)); // wait for auth to initialize
 const cUser = auth.currentUser // define current user
 const settings = { experimentalForceLongPolling: true, } 
 const db = getFirestore(app, settings);
@@ -306,4 +306,46 @@ if (pageName == 'contact') {
         alert('Your message has been sent. You should see a confirmation email shortly.')
         contactForm.reset()
     })
+}
+
+// Auth for dashboard
+if (pageName == 'dashboard') {
+    const gameForm = document.querySelector('#dash-form-games');
+    const socForm = document.querySelector('#dash-form-socials');
+
+    const getUername = getDoc(doc(db, 'users', cUser.uid)).then((uData) => {
+        const username = uData.data()['username']
+
+        var iFrame = document.getElementById('iframe');
+        iFrame.src = `https://lstg.xyz/${username}`
+    })
+
+    if (cUser == null) {
+        window.location.replace('login.html')
+    } else {
+
+        gameForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const gameName = gameForm['gameName'].value;
+            const gameTag = gameForm['gameTag'].value;
+
+            const currentData = getDoc(doc(db, 'tags', cUser.uid)).then((data) => {
+                let cTags = data.data()['tags']
+                let cSoc = data.data()['socials']
+                let cUrl = data.data()['pfpUrl']
+
+                const addDoc = updateDoc(doc(db, 'tags', cUser.uid), {
+                    pfpUrl: cUrl,
+                    tags: arrayUnion(`${gameName}: ${gameTag}`),
+                    socials: cSoc
+                }). then(() => {
+                    gameForm.reset();
+                }). the(() => {
+                    alert('Gamertag Added')
+                    window.location.reload()
+                })
+            })
+        })
+    }
 }

@@ -249,7 +249,7 @@ if (pageName == 'delete-account') { // Check if page is correct
 } // Line 198
 
 // Coming soon page 
-if (pageName == 'coming-soon') {
+if (pageName == '') {
     const comingSoonForm = document.querySelector('#comingSoonForm')
     comingSoonForm.addEventListener('submit', (e) => {
         e.preventDefault();

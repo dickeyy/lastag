@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link rel='stylesheet' href='main-style.css'>
+    <link rel='icon' href='assets/favicon.ico'>
+    <script type='module' src='main.js'></script>
+    <script type='module' src='scripts/auth.js' defer></script>
+    <title>LasTag - Dashboard</title>
+</head>
+<body>
+    <div class='page-container'>
+        <div class='content-wrap'>
+
+            <div>
+                <div class='preview-container'>
+                    <h1 class='main_title'>Preview</h1>
+                    <iframe id='iframe' class='dash-iframe' src='https://lstg.xyz/'></iframe>
+                </div>
+                <div class='side-by-side'>
+                    <h1 class='main_title'>Dashboard</h1>
+                    
+                    <div class='acct-container'>
+                        <form id='dash-form-games'>
+                            <h2 class='dash-h2'>Add Gamertags</h2>
+                            <label class='form-control-label' for='gameName'>Game Name</label>
+                            <input type='text' class='form-control-text' id='gameName' placeholder='Minecraft' required='required'>
+                            <label class='form-control-label' for='gameTag'>Gamertag</label>
+                            <input type='text' class='form-control-text' id='gameTag' placeholder='xXEp1cGuyXx' required='required'>
+                            <button class='form-control-button' type='submit'>Add</button>
+                        </form>
+                    </div>
+                    <div class='acct-container'>
+                        <form id='dash-form-socials'>
+                            <h2 class='dash-h2'>Add Social Medias</h2>
+                            <label class='form-control-label' for='twitName'>Twitter</label>
+                            <input type='text' class='form-control-text' id='twitName' placeholder='yourlastag' required='required'>
+
+                            <label class='form-control-label' for='instaName'>Instagram</label>
+                            <input type='text' class='form-control-text' id='instaName' placeholder='yourlastag' required='required'>
+
+                            <label class='form-control-label' for='twitchName'>Twitch</label>
+                            <input type='text' class='form-control-text' id='twitchName' placeholder='lastag' required='required'>
+
+                            <button class='form-control-button' type='submit'>Add</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

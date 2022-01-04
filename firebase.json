@@ -1,11 +1,16 @@
 {
   "hosting": {
+    "site": "lastag-efefb",
     "public": "public",
     "cleanUrls": true,
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ]
+    ],
+    "rewrites": [{
+      "source": "/**",
+      "function": "app"
+    }]
   }
 }
