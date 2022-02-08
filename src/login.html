@@ -4,55 +4,204 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <link rel="stylesheet" href="main-style.css">
         <link rel="icon" href="assets/favicon.ico">
         <script type='module' src='scripts/auth.js' defer></script>
         <script type="module" src="main.js"></script>
         <title>LasTag - Log In</title>
+
+
+
+    
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <meta name="keywords" content="Gamer, Tag, link, lastag, lasttag, linktree">
+        <meta name="description" content="LasTag is the last gamer tag you'll ever need.">
+        <meta name="page_type" content="np-template-header-footer-from-plugin">
+        <link rel="stylesheet" href="nicepage.css" media="screen">
+    <link rel="stylesheet" href="login.css" media="screen">
+        <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
+        <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+        <meta name="generator" content="Nicepage 4.3.3, nicepage.com">
+        <link rel="icon" href="images/favicon.png">
+        <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,500,500i,700,700i|Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+        
+        
+        
+        <script type="application/ld+json">{
+            "@context": "http://schema.org",
+            "@type": "Organization",
+            "name": "LasTag"
+    }</script>
+        <meta name="theme-color" content="#478ac9">
+        <meta property="og:title" content="login">
+        <meta property="og:description" content="LasTag is the last gamer tag you'll ever need.">
+        <meta property="og:type" content="website">
+      <script>
+        function gdprConfirmed() {
+            return true;
+        }
+        if (gdprConfirmed()) {
+        document.write("\
+        \
+        <!-- Google Analytics -->\
+        <gascript async src=\"https://www.googletagmanager.com/gtag/js?id=G-LV7Y8MHTQS\"></gascript>\
+        <gascript>\
+            window.dataLayer = window.dataLayer || [];\
+            function gtag(){dataLayer.push(arguments);}\
+            gtag('js', new Date());\
+            gtag('config', 'G-LV7Y8MHTQS');\
+        </gascript>\
+        <!-- End Google Analytics -->\
+        ".replace(/gascript/g, 'script'));
+        }
+        </script>
+        <script>
+    ( function( grecaptcha, sitekey, actions ) {
+    
+        var recaptcha = {
+    
+            execute: function( action ) {
+                grecaptcha.execute(
+                    sitekey,
+                    { action: action }
+                ).then( function( token ) {
+                    var forms = document.getElementsByTagName( 'form' );
+    
+                    for ( var i = 0; i < forms.length; i++ ) {
+                        var fields = forms[ i ].getElementsByTagName( 'input' );
+    
+                        for ( var j = 0; j < fields.length; j++ ) {
+                            var field = fields[ j ];
+    
+                            if ( 'recaptchaResponse' === field.getAttribute( 'name' ) ) {
+                                field.setAttribute( 'value', token );
+                                break;
+                            }
+                        }
+                    }
+                } );
+            },
+    
+            executeContact: function() {
+                recaptcha.execute( actions[ 'contact' ] );
+            }
+        };
+    
+        grecaptcha.ready(
+            recaptcha.executeContact
+        );
+    
+        document.addEventListener( 'change',
+            recaptcha.executeContact, false
+        );
+    } )(
+        grecaptcha,
+        '6LdzNp4dAAAAAJ__cYjRkFPSDT2qhSJyU_M_ArGv',
+        {"contact":"contact"}
+    );
+        </script>
     </head>
-<body>
-    <div class='page-container'>
-        <div class='content-wrap'>
-            <header class='header'>
-                <a class="logo" href="index.html"><img class="logo" src="assets/LasTag-Head-Logo.png" height="50" alt="logo"></a>
-                <nav>
-                    <ul class="nav_links">
-                        <li><a class="head_a" href="index.html">Home</a></li>
-                        <li><a class="head_a" href="about.html">About</a></li>
-                    </ul>
-                </nav>
-                <a class='head_a' href='login.html'><button class='head_button'><p id='loginBtn'></p></button></a>
-            </header>
-            <h1 class="about_title">Log In</h1>
-            <div class="login_container">
-                <form class="login_form" id="sign-in-form">
-                    <label for="email" class="form-control-label">Email</label>
-                    <input type="email" class="form-control my-form-control" id="email" placeholder="Ex: name@email.com" required=required>
-                    <label for="password" class="form-control-label">Password</label>
-                    <input type="password" class="form-control my-form-control" id="password" placeholder="Ex: CoolPassword" required=required>
-                   
-                    <button type="submit" class='form-control-button'>Log In</button>
-                    
-                </form>
-                <div>
-                    <br>
-                        <p class='create-acct-text'>Don't have an account? <a href="register.html" class='create-acct-a'>Register Here</a></p>
-                        <a href="forgot-password.html" class='create-acct-a'>Forgot Password</a>
-                    </div>
-            </div>
-        </div>
-        <footer class='foot'>
-            <p class='footer-p'>©2021 Lastag</p>
-            <p class='footer-p2'><a href="privacy.html" class='foot-a2'>Terms</a> and <a href='privcy.html' class='foot-a2'>Privacy</a></p>
-            <nav>
-                <ul class='nav_links'>
-                    <li><a class="foot-a" href='index.html'>Home</a></li>
-                    <li><a class='foot-a' href='about.html'>About</a></li>
-                </ul>
+      <body class="u-body u-overlap u-overlap-transparent u-stick-footer"><header class="u-clearfix u-custom-color-1 u-header u-sticky u-header" id="sec-8fc8"><div class="u-clearfix u-sheet u-sheet-1">
+            <img class="u-image u-image-default u-preserve-proportions lazyload u-image-1" alt="" data-image-width="100" data-image-height="100" data-href="https://lastag.xyz" data-src="images/favicon.png?rand=9967">
+            <a href="https://lastag.xyz/login" id="loginBtn"  class="u-btn u-button-style u-btn-1">Log In</a>
+            <nav class="u-menu u-menu-dropdown u-offcanvas u-offcanvas-shift u-menu-1" data-responsive-from="XS">
+              <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px; font-weight: 700; text-transform: uppercase;">
+                <a class="u-button-style u-custom-active-border-color u-custom-border u-custom-border-color u-custom-borders u-custom-hover-border-color u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-text-active-color u-custom-text-color u-custom-text-hover-color u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#" style="color: rgb(102, 252, 241) !important; height: 24px;">
+                  <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 124 124" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-4623"></use></svg>
+                  <svg class="u-svg-content" viewBox="0 0 124 124" x="0px" y="0px" id="svg-4623" style="enable-background:new 0 0 124 124;"><g><path d="M112,6H12C5.4,6,0,11.4,0,18s5.4,12,12,12h100c6.6,0,12-5.4,12-12S118.6,6,112,6z"></path><path d="M112,50H12C5.4,50,0,55.4,0,62c0,6.6,5.4,12,12,12h100c6.6,0,12-5.4,12-12C124,55.4,118.6,50,112,50z"></path><path d="M112,94H12c-6.6,0-12,5.4-12,12s5.4,12,12,12h100c6.6,0,12-5.4,12-12S118.6,94,112,94z"></path>
+    </g></svg>
+                </a>
+              </div>
+              <div class="u-custom-menu u-nav-container">
+                <ul class="u-nav u-spacing-30 u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-border-2 u-border-active-custom-color-4 u-border-hover-custom-color-5 u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-custom-color-4 u-text-body-alt-color u-text-hover-custom-color-5" href="https://lastag.xyz" style="padding: 10px 0px;">Home</a>
+    </li><li class="u-nav-item"><a class="u-border-2 u-border-active-custom-color-4 u-border-hover-custom-color-5 u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-custom-color-4 u-text-body-alt-color u-text-hover-custom-color-5" href="https://lastag.xyz/about" style="padding: 10px 0px;">About</a>
+    </li></ul>
+              </div>
+              <div class="u-custom-menu u-nav-container-collapse">
+                <div class="u-border-3 u-border-custom-color-4 u-container-style u-custom-color-2 u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+                  <div class="u-inner-container-layout u-sidenav-overflow">
+                    <div class="u-menu-close"></div>
+                    <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="https://lastag.xyz" style="padding: 10px 0px;">Home</a>
+    </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="https://lastag.xyz/about" style="padding: 10px 0px;">About</a>
+    </li></ul>
+                  </div>
+                </div>
+                <div class="u-black u-menu-overlay u-opacity u-opacity-85"></div>
+              </div>
             </nav>
-            <a class='foot-a' href='login.html'><button class='head_button'><p id='loginBtn2'></p></button></a>
-        </footer>
-    </div>
-</body>
-</html>
+            <h4 class="u-text u-text-custom-color-4 u-text-1">
+              <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hidden-xs u-hover-none u-none u-text-custom-color-4 u-btn-2" href="https://lastag.xyz">LasTag</a>
+            </h4>
+          </div></header>
+        <section class="u-clearfix u-section-1" id="sec-51f5">
+          <div class="u-clearfix u-sheet u-sheet-1">
+            <h1 class="u-text u-text-default u-title u-text-1">Login</h1>
+            <div class="u-border-2 u-border-custom-color-4 u-container-style u-custom-color-1 u-group u-radius-13 u-shape-round u-group-1">
+              <div class="u-container-layout u-container-layout-1">
+                <div class="u-form u-form-1">
+                  <form id="sign-in-form" class="u-clearfix u-form-spacing-9 u-form-vertical u-inner-form" source="custom" name="form" style="padding: 10px;">
+                    <input type="hidden" id="siteId" name="siteId" value="546915196">
+                    <input type="hidden" id="pageId" name="pageId" value="89118263">
+                    <div class="u-form-group u-form-name">
+                      <label for="email" class="u-label">Email</label>
+                      <input type="email" placeholder="Ex: name@example.com" id="email" name="email-1" class="u-border-2 u-border-custom-color-4 u-input u-input-rectangle u-radius-13" required="required" maxlength="50">
+                    </div>
+                    <div class="u-form-email u-form-group">
+                      <label for="email-d56a" class="u-label">Password</label>
+                      <input type="password" placeholder="Ex: coolpassword12" id="password" name="password" class="u-border-2 u-border-custom-color-4 u-input u-input-rectangle u-radius-13" required="required">
+                    </div>
+                    <div class="u-align-center u-form-group u-form-submit">
+                      <a class="u-btn u-btn-submit u-button-style">Log in</a>
+                      <input type="submit" value="submit" class="u-form-control-hidden">
+                    </div>
+                    <input type="hidden" value="" name="recaptchaResponse">
+                  </form>
+                </div>
+                <p class="u-text u-text-default u-text-2">
+                  <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-grey-50 u-text-hover-palette-4-base u-btn-2" href="https://lastag.xyz/forgot-password" target="_blank">Forgot Password</a>
+                </p>
+
+                <p class="u-text u-text-default u-text-2">
+                  <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-grey-50 u-text-hover-palette-4-base u-btn-2" href="https://lastag.xyz/register" target="_blank">Don't have an account?</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        
+        
+        <footer class="u-align-left u-clearfix u-custom-color-1 u-footer u-footer" id="sec-3626"><div class="u-clearfix u-sheet u-sheet-1">
+            <p class="u-text u-text-1">© 2021 LasTag</p>
+            <a href="https://lastag.xyz/login" id="loginBtn2"  class="u-border-3 u-border-palette-5-dark-1 u-btn u-button-style u-hover-custom-color-5 u-btn-1">Log In</a>
+            <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
+              <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px; font-weight: 700; text-transform: uppercase;">
+                <a class="u-button-style u-custom-active-border-color u-custom-border u-custom-border-color u-custom-borders u-custom-hover-border-color u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-text-active-color u-custom-text-color u-custom-text-hover-color u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#">
+                  <svg class="u-svg-link" viewBox="0 0 24 24"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use></svg>
+                  <svg class="u-svg-content" version="1.1" id="menu-hamburger" viewBox="0 0 16 16" x="0px" y="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g><rect y="1" width="16" height="2"></rect><rect y="7" width="16" height="2"></rect><rect y="13" width="16" height="2"></rect>
+    </g></svg>
+                </a>
+              </div>
+              <div class="u-custom-menu u-nav-container">
+                <ul class="u-nav u-spacing-30 u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-border-2 u-border-active-custom-color-4 u-border-hover-custom-color-5 u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-custom-color-4 u-text-body-alt-color u-text-hover-custom-color-5" href="https://lastag.xyz/" style="padding: 10px 0px;">Home</a>
+    </li><li class="u-nav-item"><a class="u-border-2 u-border-active-custom-color-4 u-border-hover-custom-color-5 u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-custom-color-4 u-text-body-alt-color u-text-hover-custom-color-5" href="https://lastag.xyz/about" style="padding: 10px 0px;">About</a>
+    </li></ul>
+              </div>
+              <div class="u-custom-menu u-nav-container-collapse">
+                <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+                  <div class="u-inner-container-layout u-sidenav-overflow">
+                    <div class="u-menu-close"></div>
+                    <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="https://lastag.xyz/" style="padding: 10px 0px;">Home</a>
+    </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="https://lastag.xyz/about" style="padding: 10px 0px;">About</a>
+    </li></ul>
+                  </div>
+                </div>
+                <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+              </div>
+            </nav>
+            <p class="u-text u-text-palette-5-light-1 u-text-2">
+              <a href="https://lastag.xyz/terms" class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-hover-custom-color-5 u-text-palette-5-light-1 u-btn-2">Terms </a>and <a href="https://lastag.xyz/privacy" class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-hover-custom-color-5 u-text-palette-5-light-1 u-btn-3">Privacy</a>
+            </p>
+          </div></footer>
+      </body>
+    </html>
