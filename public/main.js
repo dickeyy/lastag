@@ -29,12 +29,9 @@ const headBtn = document.getElementById('loginBtn')
 const headBtn2 = document.getElementById('loginBtn2')
 //const headBtn3 = document.getElementById('loginBtn3')
 
-if (pageName != "") {
-  if (pageName != "contact") {
-    window.location.replace('index.html')
-  }
+if (pageName != "" && pageName != "contact" && pageName != "unsubscribe" && pageName != "account-action" && pageName != "server") {
+  window.location.replace('index.html')
 }
-
 
 // Detedct auth state
 onAuthStateChanged(auth, user => {

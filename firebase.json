@@ -1,7 +1,7 @@
 {
   "hosting": {
-    "site": "lastag-efefb",
-    "public": "public",
+    "site": "lastag-beta",
+    "public": "react-app/build",
     "cleanUrls": true,
     "ignore": [
       "firebase.json",
