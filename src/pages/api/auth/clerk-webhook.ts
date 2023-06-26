@@ -27,7 +27,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 
     console.log(msg);
 
-    const evt = msg.event as WebhookEvent; 
+    const evt = msg as WebhookEvent; 
     switch (evt.type) {
         case 'user.created': // this is typed
             let db = client.db("main")
