@@ -4,7 +4,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 
 export default function (req: NextApiRequest, res: NextApiResponse) {
 
-    const evt = req.body.evt as WebhookEvent; 
+    const evt = req.body as WebhookEvent; 
     switch (evt.type) {
         case 'user.created': // this is typed
             let db = client.db("main")
