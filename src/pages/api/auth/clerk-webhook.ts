@@ -12,16 +12,15 @@ export const config = {
 
 const secret = process.env.CLERK_WH_SECRET as string;
 
-export default async function (req: NextApiRequest, res: NextApiResponse) {
+let db = client.db("main")
 
-    let db = client.db("main")
+export default async function (req: NextApiRequest, res: NextApiResponse) {
 
     const payload = (await buffer(req)).toString();
     const headers = req.headers as Record<string, string>;
 
     const wh = new Webhook(secret);
     let msg: any;
-
 
     // verify the webhook
     try {
