@@ -1,10 +1,9 @@
 import type { WebhookEvent } from "@clerk/clerk-sdk-node" 
 import client from "../../../utils/db"
+import type { NextApiRequest, NextApiResponse } from 'next'
 
-export default function (req: any, res: any) {
+export default function (req: NextApiRequest, res: NextApiResponse) {
 
-    let db = client.db("main")
-    
     const evt = req.body.evt as WebhookEvent; 
     switch (evt.type) {
         case 'user.created': // this is typed
