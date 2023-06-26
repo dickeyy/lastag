@@ -14,16 +14,12 @@ export default function Login() {
 
     const [isLoading, setIsLoading] = useState(false)
 
-    const submit = () => {
-        console.log(username, password);
-    };
-
     return (
         <main
       		className={`flex min-h-screen flex-col items-center justify-center px-10 ${inter.className}`}
 			data-theme="dracula"
     	>	
-			<SEOHead title={"Log In"} />
+			<SEOHead title={"Sign In"} />
 			
 			<Navbar />	
 
