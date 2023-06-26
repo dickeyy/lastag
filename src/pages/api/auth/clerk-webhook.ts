@@ -18,14 +18,16 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     const headers = req.headers as Record<string, string>;
 
     const wh = new Webhook(secret);
-    let msg;
+    let msg: any;
     try {
         msg = wh.verify(payload, headers);
     } catch (err) {
         res.status(400).json({});
     }
 
-    const evt = req.body as WebhookEvent; 
+    console.log(msg);
+
+    const evt = msg.event as WebhookEvent; 
     switch (evt.type) {
         case 'user.created': // this is typed
             let db = client.db("main")
