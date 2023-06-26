@@ -27,6 +27,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 
     console.log(msg)
     console.log(evt)
+    console.log(payload)
 
     // verify the webhook
     try {
