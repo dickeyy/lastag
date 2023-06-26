@@ -25,6 +25,9 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     // set the webhook event 
     const evt = msg as WebhookEvent; 
 
+    console.log(msg)
+    console.log(evt)
+
     // verify the webhook
     try {
         msg = wh.verify(payload, headers);
