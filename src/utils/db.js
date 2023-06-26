@@ -15,11 +15,10 @@ async function run() {
     try {
         // Connect the client to the server
         await client.connect().then(() => {
-            console.log('Connected successfully to server');
+            console.log('Connected successfully to db');
         });
-    } finally {
-        // Ensures that the client will close when you finish/error
-        await client.close();
+    } catch (error) {
+        console.log(error);
     }
 }
 
