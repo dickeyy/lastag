@@ -24,7 +24,7 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
     }
     const user = userId ? await clerkClient.users.getUser(userId) : null;
 
-    const res:any = axios.get(`${process.env.API_URL}/api/tag?tag=${user?.username}`)
+    const res:any = axios.get(`${process.env.NEXT_PUBLIC_API_URL}}/api/tag?tag=${user?.username}`)
     
     // resolve the promise
     const json = await res

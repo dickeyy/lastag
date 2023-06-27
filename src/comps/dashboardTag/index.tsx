@@ -8,7 +8,7 @@ export default function DashboardTag(props: any) {
     const [gameTag, setGameTag] = useState(props.tag.game_tag)
 
     const saveTag = (gameName:any, gameTag:any, id:any,) => {
-        axios.post('/api/save-tag', {
+        axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/save-tag`, {
             username: props.user?.username,
             tag: {
                 game_name: gameName,

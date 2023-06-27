@@ -24,7 +24,7 @@ export default function DashboardSocial(props: any) {
     ]
 
     const saveSocial = (socName:any, socUsername:any) => {
-        axios.post('/api/save-social', {
+        axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/save-social`, {
             username: props.user?.username,
             social: {
                 social_name: socName,
@@ -41,7 +41,7 @@ export default function DashboardSocial(props: any) {
     }
 
     const deleteSocial = (social_name:any) => {
-        axios.post('/api/delete-social', {
+        axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/delete-social`, {
             username: props.user?.username,
             social: {
                 social_name: social_name,
@@ -57,7 +57,7 @@ export default function DashboardSocial(props: any) {
     }
 
     const createNewSocial = () => {
-        axios.post('/api/create-social', {
+        axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/create-social`, {
             username: props.user?.username,
             social: {
                 social_name: socialName,

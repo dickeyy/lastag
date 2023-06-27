@@ -12,7 +12,7 @@ const inter = Inter({ subsets: ['latin'] })
 Tag.getInitialProps = async (ctx: NextPageContext) => {
     const { tag } = ctx.query
 
-    const res:any = axios.get(`${process.env.API_URL}/api/tag?tag=${tag}`)
+    const res:any = axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/tag?tag=${tag}`)
     
     // resolve the promise
     const json = await res
