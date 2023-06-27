@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FaSave, FaTrash } from "react-icons/fa";
+import axios from "axios";
 
 export default function DashboardTag(props: any) {
 
@@ -7,23 +8,17 @@ export default function DashboardTag(props: any) {
     const [gameTag, setGameTag] = useState(props.tag.game_tag)
 
     const saveTag = (gameName:any, gameTag:any, id:any,) => {
-        const req = fetch(`/api/save-tag`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                username: props.user?.username,
-                tag: {
-                    game_name: gameName,
-                    game_tag: gameTag,
-                    id: id
-                }
-            })
-        }).then(res => res.json()).then(json => {
-            if (json) {
-                console.log(json.tagData);
-                props.setTags(json.tagData)
+        axios.post('/api/save-tag', {
+            username: props.user?.username,
+            tag: {
+                game_name: gameName,
+                game_tag: gameTag,
+                id: id
+            }
+        }).then(res => {
+            if (res.data) {
+                console.log(res.data.tagData);
+                props.setTags(res.data.tagData)
 
                 props.showToast()
             }
@@ -31,21 +26,15 @@ export default function DashboardTag(props: any) {
     }
 
     const deleteTag = (id:any) => {
-        const req = fetch(`/api/delete-tag`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                username: props.user?.username,
-                tag: {
-                    id: id
-                }
-            })
-        }).then(res => res.json()).then(json => {
-            if (json) {
-                console.log(json.tagData);
-                props.setTags(json.tagData)
+        axios.post('/api/delete-tag', {
+            username: props.user?.username,
+            tag: {
+                id: id
+            }
+        }).then(res => {
+            if (res.data) {
+                console.log(res.data.tagData);
+                props.setTags(res.data.tagData)
 
                 props.showToast()
             }

@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { FaDiscord, FaFacebook, FaGithub, FaInstagram, FaLinkedin, FaReddit, FaSnapchat, FaSpotify, FaTiktok, FaTwitch, FaTwitter, FaYoutube, FaSave } from "react-icons/fa";
 
@@ -23,22 +24,16 @@ export default function DashboardSocial(props: any) {
     ]
 
     const saveSocial = (socName:any, socUsername:any) => {
-        const req = fetch(`/api/save-social`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                username: props.user?.username,
-                social: {
-                    social_name: socName,
-                    social_username: socUsername,
-                }
-            })
-        }).then(res => res.json()).then(json => {
-            if (json) {
-                console.log(json.socialData);
-                props.setSocials(json.socialData)
+        axios.post('/api/save-social', {
+            username: props.user?.username,
+            social: {
+                social_name: socName,
+                social_username: socUsername,
+            }
+        }).then(res => {
+            if (res.data) {
+                console.log(res.data.socialData);
+                props.setSocials(res.data.socialData)
 
                 props.showToast()
             }
@@ -46,21 +41,15 @@ export default function DashboardSocial(props: any) {
     }
 
     const deleteSocial = (social_name:any) => {
-        const req = fetch(`/api/delete-social`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                username: props.user?.username,
-                social: {
-                    social_name: social_name,
-                }
-            })
-        }).then(res => res.json()).then(json => {
-            if (json) {
-                console.log(json.social);
-                props.setSocials(json.socialData)
+        axios.post('/api/delete-social', {
+            username: props.user?.username,
+            social: {
+                social_name: social_name,
+            }
+        }).then(res => {
+            if (res.data) {
+                console.log(res.data.socialData);
+                props.setSocials(res.data.socialData)
 
                 props.showToast()
             }
@@ -68,21 +57,15 @@ export default function DashboardSocial(props: any) {
     }
 
     const createNewSocial = () => {
-        const req = fetch(`/api/create-social`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                username: props.user?.username,
-                social: {
-                    social_name: socialName,
-                }
-            })
-        }).then(res => res.json()).then(json => {
-            if (json) {
-                console.log(json.socialData);
-                props.setSocials(json.socialData)
+        axios.post('/api/create-social', {
+            username: props.user?.username,
+            social: {
+                social_name: socialName,
+            }
+        }).then(res => {
+            if (res.data) {
+                console.log(res.data.socialData);
+                props.setSocials(res.data.socialData)
             }
         })
     }

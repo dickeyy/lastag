@@ -11,6 +11,7 @@ import DashboardTag from "@/comps/dashboardTag";
 import DashboardPreview from "@/comps/dashboardPreview";
 import { FaDiscord, FaFacebook, FaGithub, FaInstagram, FaLinkedin, FaReddit, FaSnapchat, FaSpotify, FaTiktok, FaTwitch, FaTwitter, FaYoutube } from "react-icons/fa";
 import DashboardSocial from "@/comps/dashboardSocial";
+import axios from "axios";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -26,14 +27,14 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
     }
     const user = userId ? await clerkClient.users.getUser(userId) : null;
 
-    const res = await fetch(`http://localhost:3000/api/tag?tag=${user?.username}`)    
-    const json = await res.json()
-
-    console.log(json);
+    const res:any = axios.get(`${process.env.API_URL}/api/tag?tag=${user?.username}`)
+    
+    // resolve the promise
+    const json = await res
 
     return {
         props: {
-            data: json
+            data: json.data
         },
     };
 }

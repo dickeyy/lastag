@@ -4,6 +4,7 @@ import { NextPageContext } from 'next'
 import SEOHead from '@/comps/seoHead'
 import { Inter } from 'next/font/google'
 import { FaDiscord, FaFacebook, FaGithub, FaInstagram, FaLinkedin, FaReddit, FaSnapchat, FaSpotify, FaTiktok, FaTwitch, FaTwitter, FaYoutube } from 'react-icons/fa'
+import axios from 'axios'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -11,12 +12,14 @@ const inter = Inter({ subsets: ['latin'] })
 Tag.getInitialProps = async (ctx: NextPageContext) => {
     const { tag } = ctx.query
 
-    const res = await fetch(`http://localhost:3000/api/tag?tag=${tag}`)    
-    const json = await res.json()
+    const res:any = axios.get(`${process.env.API_URL}/api/tag?tag=${tag}`)
+    
+    // resolve the promise
+    const json = await res
 
-    console.log(json);
-
-    return { data: json }
+    return {
+        data: json.data
+    };
 }
 
 export default function Tag({ data }: { data: any}) {
