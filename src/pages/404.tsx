@@ -11,7 +11,7 @@ export default function fourohfour() {
     	>	
 			<SEOHead title={'404'} />
 
-            <h1>404</h1>
+            <h1>{process.env.API_URL}</h1>
         </main>
     )
 }
